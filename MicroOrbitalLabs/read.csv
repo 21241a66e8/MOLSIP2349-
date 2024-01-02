@@ -1,0 +1,5 @@
+def read_from_csv():
+    with open('contacts.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            print(row)  # Do whatever you need with the row data

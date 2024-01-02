@@ -1,0 +1,14 @@
+import csv
+
+def write_to_csv(contact_info):
+    with open('contacts.csv', 'a', newline='') as csvfile:
+        fieldnames = ['Name', 'Phone', 'Email']  # Example field names
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        # Check if file is empty and write headers
+        csvfile.seek(0)
+        has_header = csv.Sniffer().has_header(csvfile.read(1024))
+        csvfile.seek(0)
+        if not has_header:
+            writer.writeheader()
+

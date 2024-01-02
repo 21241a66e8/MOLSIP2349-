@@ -1,0 +1,14 @@
+def update_contact(old_info, new_info):
+    with open('contacts.csv', 'r', newline='') as csvfile:
+        fieldnames = ['Name', 'Phone', 'Email']
+        reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+        rows = list(reader)
+
+    for row in rows:
+        if row == old_info:
+            row.update(new_info)
+
+    with open('contacts.csv', 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
